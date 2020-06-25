@@ -5,7 +5,7 @@ def q1
   names = ["田中", "佐藤", "佐々木", "高橋"]
 
   # 以下に回答を記載
-  names.push("斎藤")
+  names  << "斎藤"
   p names
 end
 
@@ -14,8 +14,7 @@ def q2
   array2 = ["bird", "bat", "tiger"]
 
   # 以下に回答を記載
-  array = array1.push(array2)
-  array.flatten!
+  array = array1 + array2
   p array
 end
 
@@ -40,9 +39,8 @@ def q5
   array2 = [1, 5, 8, 10]
 
   # 以下に回答を記載
-  if array1.empty?
-    p true
-  end
+  p array1.empty?
+  
   if array2.count > 0
     p false
   end
@@ -53,8 +51,8 @@ def q6
 
   # 以下に回答を記載
   numbers2 = []
-  numbers1.each do |i|
-    numbers2.push(i * 10)
+  numbers1.map do |i|
+    numbers2 << i * 10
   end
   p numbers2
   
@@ -76,7 +74,7 @@ def q8
   upper_case_programming_languages = []
   programming_languages.map do |i|
     i.capitalize!
-    upper_case_programming_languages.push(i.upcase)
+    upper_case_programming_languages << i.upcase
   end
   # 以下は変更しないで下さい
   p programming_languages
@@ -97,11 +95,7 @@ def q10
 
   # 以下に回答を記載
   foods.map do |i|
-    if i.include?("うに")
-      puts "好物です"
-    else
-      puts "まぁまぁ好きです"
-    end
+    (i.include?("うに")) ? (puts "好物です") : (puts "まぁまぁ好きです" )
   end
 end
   
@@ -109,14 +103,16 @@ def q11
   sports = ["サッカー", "バスケ", "野球", ["フットサル", "野球"], "水泳", "ハンドボール", ["卓球", "サッカー", "ボルダリング"]]
 
   # 以下に回答を記載
-
+   sports.flatten.uniq.each.with_index(1) do |sport, i|
+     puts "No#{i} #{sport}"
+   end
 end
 
 def q12
   data = { user: { name: "satou", age: 33 } }
 
   # 以下に回答を記載
-
+  p data[:user][:name]
 end
 
 def q13
@@ -124,14 +120,14 @@ def q13
   update_data = { age: 32, address: "沖縄" }
 
   # 以下に回答を記載
-
+  p user_data.merge!(update_data)
 end
 
 def q14
   data = { name: "satou", age: 33, address: "saitama", hobby: "soccer", email: "hoge@fuga.com" }
 
   # 以下に回答を記載
-
+  p array = data.keys
 end
 
 def q15
@@ -139,7 +135,8 @@ def q15
   data2 = { name: "yamada", hobby: "baseball", role: "normal" }
 
   # 以下に回答を記載
-
+  (data1.has_key?(:age)) ? (puts "OK") : (puts "NG")
+  (data2.has_key?(:age)) ? (puts "OK") : (puts "NG")
 end
 
 def q16
@@ -151,7 +148,9 @@ def q16
   ]
 
   # 以下に回答を記載
-
+  users.map do |user|
+    puts "私の名前は#{user[:name]}です。年齢は#{user[:age]}歳です。"
+  end
 end
 
 class UserQ17

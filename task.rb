@@ -41,9 +41,8 @@ def q5
   # 以下に回答を記載
   p array1.empty?
   
-  if array2.count > 0
-    p false
-  end
+  p array2.empty?
+  
 end
 
 def q6
@@ -89,7 +88,7 @@ def q10
 
   # 以下に回答を記載
   foods.map do |i|
-    (i.include?("うに")) ? (puts "好物です") : (puts "まぁまぁ好きです" )
+    puts i.include?("うに") ? "好物です" : "まぁまぁ好きです" 
   end
 end
   
@@ -129,8 +128,8 @@ def q15
   data2 = { name: "yamada", hobby: "baseball", role: "normal" }
 
   # 以下に回答を記載
-  (data1.has_key?(:age)) ? (puts "OK") : (puts "NG")
-  (data2.has_key?(:age)) ? (puts "OK") : (puts "NG")
+  puts data1.has_key?(:age) ? "OK" : "NG"
+  puts data2.has_key?(:age) ? "OK" : "NG"
 end
 
 def q16

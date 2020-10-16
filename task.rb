@@ -148,16 +148,18 @@ end
 
 class UserQ17
   # 以下に回答を記載
-  def initialize(**options)
-    @name = options[:name]
-    @age = options[:age]
-    @gender = options[:gender]
+  def initialize(params)
+    @name = params[:name]
+    @age = params[:age]
+    @gender = params[:gender]
   end
 
   def info
-    puts "名前:#{@name}"
-    puts "年齢:#{@age}"
-    puts "性別:#{@gender}"
+    puts <<~TEXT
+    "名前:#{@name}"
+    "年齢:#{@age}"
+    "性別:#{@gender}"
+    TEXT
   end
 end
 
@@ -173,6 +175,18 @@ end
 
 class UserQ18
   # 以下に回答を記載
+  def initialize(params)
+    @name = params[:name]
+    @age = params[:age]
+  end
+
+  def introduce
+    if @age == 32
+      puts "こんにちは#{@name}と申します。宜しくお願いいたします。"
+    else
+      puts "はいさいまいど〜，#{@name}です！！！"
+    end
+  end
 
 end
 
@@ -188,8 +202,11 @@ end
 class Item
   # 以下を修正して下さい
 
-  def initialize(name)
+  def initialize(name:)
     @name = name
+  end
+  def name
+    @name
   end
 end
 
@@ -201,12 +218,34 @@ end
 
 class UserQ20
   # 以下に回答を記載
+  attr_reader :name, :age
+  def initialize(params)
+    @name = params[:name]
+    @age = params[:age]
+  end
 
 end
 
 class Zoo
   # 以下に回答を記載
-
+  def initialize(params)
+    @name= params[:name]
+    @entry_fee = params[:entry_fee]
+  end
+  def info_entry_fee(user)
+    entry_fee = case user.age
+    when 0..5
+      @entry_fee[:infant]
+    when 6..12
+      @entry_fee[:children]
+    when 13..64
+      @entry_fee[:adult]
+    else
+      @entry_fee[:senior]
+    end
+      puts "#{user.name}さんの入場料金は #{entry_fee} 円です。"
+  
+  end
 end
 
 
